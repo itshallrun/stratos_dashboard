@@ -1,0 +1,80 @@
+<template name="dashboard">
+    <div>
+        <div class="row" style="margin-top:10px;">
+            <div id="legend" style="display:none;">
+                <img src="http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|78b9f3" alt="" height="20px"> akt. Flugroute&nbsp;
+                <img src="http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|34ba46" alt="" height="20px"> Vorhersage
+
+            </div>
+            <div class="col-sm-6" style="margin-bottom: 10px; padding-right:8px !important;">
+                <div class="ibox float-e-margins" style="margin-bottom: 0 !important;">
+                    <div class="ibox-content mainWidgets"  >
+                        {{>map}}
+                    </div>
+
+                </div>
+                <div class="clearfix"></div>
+            </div>
+
+            <div class="col-sm-6 mainWidgets" style="padding-left:8px !important;" >
+                <div id="sensorChart" style="height:100%">{{sensorChart}}</div>
+            </div>
+        </div>
+    </div>
+
+    {{>sensorBox}}
+
+</template>
+
+<template name="sensorBox">
+    <div class="ibox">
+        <div class="ibox-title">
+            <h5>Zuletzt empfangene Werte
+                <small class="m-l-sm">Empfangen am: {{timestamp}}
+                </small>
+            </h5>
+        </div>
+        <div class="ibox-content sensorBox">
+            {{>sensors}}
+        </div>
+    </div>
+    <div class="clearfix"></div>
+</template>
+
+<template name="sensors">
+    <div class="row row-centered">
+        {{#each lastValueSat}}
+            <div class="col-xs-2 sensorWidget col-centered" >
+                <div class="widget style1 navy-bg {{#if btn}}sensor-btn{{/if}}">
+                    <div class="row">
+
+                        <div class="col-xs-12 text-right" >
+                            <span>{{description}}</span>
+                            <h2 class="font-bold">{{valueFormatted}} {{unit}}</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {{/each}}
+        {{#each lastValueSen}}
+            <div class="col-xs-2 sensorWidget col-centered" >
+                <div class="widget style1 navy-bg {{#if btn}}sensor-btn{{/if}}">
+                    <div class="row">
+
+                        <div class="col-xs-12 text-right" >
+                            <span>{{description}}</span>
+                            <h2 class="font-bold">{{valueFormatted}} {{unit}}</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {{/each}}
+
+    </div>
+</template>
+
+<template name="map" >
+    {{> googleMap name="map" options=mapOptions}}
+</template>
+
+

@@ -1,0 +1,186 @@
+<template name="flightcontrol">
+
+    {{> pageHeading title='Flug Kontrolle' }}
+    <div class="row wrapper wrapper-content animated fadeInRight">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <h5>Flug Verwaltung
+                            <small class="m-l-sm">Beispiel für anlegen von neuen Missionen usw.</small>
+                        </h5>
+                        {{>iboxTools}}
+                    </div>
+                    <div class="ibox-content">
+                        <h2>
+                            Aktiver Flug<br>
+                        </h2>
+                        <p>Flug ID: {{ActiveFlight.id}}</p>
+                        <p>Beschreibung: {{ActiveFlight.description}}</p>
+                        <p>Start Datum: {{ActiveFlight.start_time}}</p>
+                        <button type="button" id="reset_activeFlight" class="btn btn-w-m btn-danger">Zurücksetzen
+                        </button>
+
+                        <!--<h2>-->
+                        <!--Beispiel Funktionen<br>-->
+                        <!--<p>(noch ohne funktion)</p>-->
+                        <!--<br>-->
+                        <!--</h2>-->
+                        <!--<button type="button" class="btn btn-w-m btn-danger">Starten</button>-->
+                        <!--<button type="button" class="btn btn-w-m btn-success">Beenden</button>-->
+                        <!--<button type="button" class="btn btn-w-m btn-warning">...</button>-->
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <h5>Flug Vorhersage
+                            <small class="m-l-sm">Hier kann die Vorhersage für den aktuellen Flug aktualisiert werden
+                            </small>
+                        </h5>
+                        {{>iboxTools}}
+                    </div>
+                    <div class="ibox-content">
+                        {{>forecast}}
+
+                        <div class="clearfix"></div>
+
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <h5>Datenbankverwaltung
+                            <small class="m-l-sm">Hier können bestimmte Werte der lokalen Datenbank zurückgesetzt
+                                werden.
+                            </small>
+                        </h5>
+                        {{>iboxTools}}
+                    </div>
+                    <div class="ibox-content">
+                        <div class="col-sm-1"><span class="help-block m-b-none"><i
+                                class="fa fa-3x fa-exclamation-triangle"></i></span></div>
+
+                        <div class="col-sm-11"><span class="help-block m-b-none">Sollten in der Datenbank Werte auftauchen die da nicht hingehören, zum Beispiel von vorangegangenen Flügen, können hiermit alle Werte gelöscht werden. Daraufhin werden beim nächsten nachladen nur noch die Werte der aktuellen Mission nachgeladen.</span>
+                        </div>
+                        <br>
+                        <h4>Metadaten</h4>
+                        <button type="button" id="reset_meta" class="btn btn-w-m btn-danger">Zurücksetzen</button>
+                        <h4>Vorhersage</h4>
+                        <button type="button" id="reset_forecast" class="btn btn-w-m btn-danger">Zurücksetzen</button>
+                        <h4>Sensoren Werte</h4>
+                        <button disabled type="button" id="reset_sensorval" class="btn btn-w-m btn-danger">
+                            Zurücksetzen
+                        </button>
+
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <h5>Countdown
+                            <small class="m-l-sm">Hier kann das Enddatum des Haupt-Countdowns festgelegt werden.
+                            </small>
+                        </h5>
+                        {{>iboxTools}}
+                    </div>
+                    <div class="ibox-content">
+                        {{>setCountdown}}
+
+                        <div class="clearfix"></div>
+
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <h5>Bidirektionale Steuerung
+                            <small class="m-l-sm">Beispiel für bidirektionale Steuerung</small>
+                        </h5>
+                        {{>iboxTools}}
+                    </div>
+
+                    <div class="ibox-content">
+                        <h2>
+
+                            Beispiel<br>
+
+                        </h2>
+
+                        <button type="button" class="btn btn-w-m btn-danger">Abkoppeln</button>
+
+                        <button type="button" class="btn btn-w-m btn-success">Sprengen</button>
+
+                        <button type="button" class="btn btn-w-m btn-warning">Ping</button>
+
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+</template>
+
+<template name="setCountdown">
+    <form role="form">
+        <div class="col-sm-5">
+            <div class="form-group" id="data_1">
+                <div class="input-group date">
+                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                    <input id="datepicker" type="text" required
+                           class="form-control"
+                           value="">
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-5">
+            <div class="input-group clockpicker" data-autoclose="true">
+                <input required id="clockpicker" type="text" class="form-control" value="12:00">
+                <span class="input-group-addon">
+                                    <span class="fa fa-clock-o"></span>
+                                </span>
+            </div>
+        </div>
+        <div class="col-sm-2">
+            <button class="btn btn-block btn-primary pull-left" type="submit"><strong>Set</strong>
+            </button>
+        </div>
+        <br>
+        <div class="col-sm-12">{{endTime}}</div>
+
+    </form>
+</template>
+
+<template name="forecast">
+    <form role="form">
+        <div class="col-sm-1"><span class="help-block m-b-none"><i class="fa fa-3x fa-exclamation-triangle"></i></span>
+        </div>
+        <div class="col-sm-11"><span class="help-block m-b-none">Die Vorhersage kann nur im "JSON" Format hochgeladen werden, der CSV-String kann hiermit konvertiert werden. Die Eingabe muss in folgender Form erfolgen: die ersten 4 Werte und Absätze beachten "timestamp,lat,lng,alt"</span>
+        </div>
+
+        <div class="col-sm-12">
+            <p></p>
+            <textarea style="width:100%" name="forecastInput" id="forecastInput" rows="10"
+                      placeholder='timestamp,lat,lng,alt
+1435932000,49.2449,7.0181,210
+1435932000,49.2449,7.0181,410
+usw...'></textarea>
+        </div>
+
+        <div class="col-sm-6">
+            <button id="csv2jsonSubmit" class="btn btn-block btn-primary" type="submit"><strong>Nach JSON
+                konvertieren</strong>
+            </button>
+        </div>
+
+    </form>
+</template>

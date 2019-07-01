@@ -1,0 +1,254 @@
+/*
+ *
+ *   INSPINIA - Responsive Admin Theme
+ *   Meteor version
+ *   version 2.6
+ *
+*/
+
+// Google Fonts
+@import url("http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700");
+
+// Variables, Mixins
+@import "globals/variables.import.less";
+@import "globals/mixins.import.less";
+
+// INSPINIA Theme Elements
+@import "globals/typography.import.less";
+@import "globals/navigation.import.less";
+@import "globals/top_navigation.import.less";
+@import "globals/buttons.import.less";
+@import "globals/badgets_labels.import.less";
+@import "globals/elements.import.less";
+@import "globals/sidebar.import.less";
+@import "globals/base.import.less";
+@import "globals/pages.import.less";
+@import "globals/chat.import.less";
+@import "globals/metismenu.import.less";
+@import "globals/spinners.import.less";
+
+// Landing page
+@import "globals/landing.import.less";
+
+// RTL Support
+@import "globals/rtl.import.less";
+
+// For demo only - config box style
+@import "globals/theme-config.import.less";
+
+// INSPINIA Skins
+@import "globals/skins.import.less";
+@import "globals/md-skin.import.less";
+
+// Media query style
+@import "globals/media.import.less";
+
+// Custom style
+// Your custom style to override base style
+@import "globals/custom.import.less";
+
+// Clear layout on print mode
+@media print {
+  nav.navbar-static-side {
+    display: none;
+  }
+
+  body { overflow: visible !important; }
+
+  #page-wrapper {
+    margin: 0;
+  }
+}
+
+.sensor-btn:hover {
+  background: #0da19c;
+  cursor: pointer
+}
+
+.ct_digit {
+  font-size: 10em;
+  font-weight: bold;
+  display: inline-block;
+  text-align: center;
+  padding: 13px;
+  line-height: 45px
+}
+
+/* centered columns styles */
+.row-centered {
+  text-align: center;
+}
+
+.col-centered {
+  display: inline-block;
+  float: none;
+  /* reset the text-align */
+  text-align: left;
+  /* inline-block space fix */
+  margin-right: -4px;
+}
+
+.sensorWidget {
+  min-width: 135px;
+  padding-right: 0 !important;
+  padding-left: 0 !important;
+}
+
+.widget {
+  margin: 0 10px 8px 0 !important;
+}
+
+@media screen and (max-width: 1380px) {
+
+  .sensorWidget h2 {
+    font-size: 25px !important
+  }
+
+  .sensorWidget span {
+    font-size: 13px !important
+  }
+}
+
+@media screen and (max-width: 1280px) {
+
+  .sensorWidget h2 {
+    font-size: 20px !important
+  }
+
+  .sensorWidget span {
+    font-size: 12px !important
+  }
+}
+
+@media screen and (max-width: 1180px) {
+
+  .sensorWidget h2 {
+    font-size: 16px !important
+  }
+
+  .sensorWidget span {
+    font-size: 11px !important
+  }
+}
+
+@media screen and (max-width: 1080px) {
+  .widget {
+    margin: 0 5px 5px 0 !important;
+  }
+
+  .sensorWidget h2 {
+    font-size: 15px !important
+  }
+
+  .sensorWidget span {
+    font-size: 10px !important
+  }
+}
+
+.mainWidgets {
+  height: 300px
+}
+@media screen and (min-height: 400px) {
+  .mainWidgets {
+    height: 350px
+  }
+
+}
+//@media screen and (min-height: 500px) {
+//  .mainWidgets {
+//    height: 400px
+//  }
+//
+//}
+@media screen and (min-height: 600px) {
+  .mainWidgets {
+    height: 365px
+  }
+
+}
+@media screen and (min-height: 700px) {
+  .mainWidgets {
+    height: 410px
+  }
+
+}
+@media screen and (min-height: 800px) {
+  .mainWidgets {
+    height: 460px
+  }
+
+}
+@media screen and (min-height: 900px) {
+  .mainWidgets {
+    height: 580px
+  }
+
+}
+
+@media screen and (min-height: 1000px) {
+  .mainWidgets {
+    height: 700px
+  }
+
+}
+
+@media screen and (max-width: 1060px) {
+  .ct_digit {
+    font-size: 8em !important;
+    line-height: 40px;
+    padding: 10px;
+  }
+
+}
+
+@media screen and (max-width: 900px) {
+  .ct_digit {
+    font-size: 7em !important;
+    line-height: 35px;
+    padding: 8px;
+  }
+
+}
+
+@media screen and (max-width: 600px) {
+  .ct_digit {
+    font-size: 6em !important;
+    line-height: 30px;
+    padding: 6px;
+  }
+
+}
+
+.fa-paragraph:before {
+  font-weight: bold;
+  content: '§';
+  padding: 0 0 0 5px !important;
+}
+
+@media screen and (max-width: 350px) {
+  .ct_digit {
+    font-size: 4em !important;
+    line-height: 23px;
+    padding: 6px;
+  }
+
+}
+
+.fa-paragraph:before {
+  font-weight: bold;
+  content: '§';
+  padding: 0 0 0 5px !important;
+}
+
+
+#legend {
+  border-radius: 2px;
+  box-shadow: rgba(0, 0, 0, 0.3) 0 1px 4px -1px;
+  background: white;
+  padding: 10px;
+  margin-left: 10px;
+}
+
+.sensorBox{
+  padding: 10px 20px 0 25px;
+}

@@ -1,0 +1,97 @@
+<template name="admin">
+  <!-- Page heading -->
+  {{> pageHeading title='Einstellungen' }}
+
+  <div class="row wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+      <div class="col-lg-6">
+        <div class="ibox float-e-margins">
+          <div class="ibox-title">
+            <h5>
+              Logo - Verwaltung
+              <small class="m-l-sm">Hier kann das Logo verändert werden.</small>
+            </h5>
+            {{>iboxTools}}
+          </div>
+          <div class="ibox-content">
+            <h3>Vorschau aktuelles Logo:</h3>
+            <img
+              src="{{logoUrl}}"
+              alt="Stratos logo"
+              style="height: 150px;margin: 0 auto;display: inherit;"
+            />
+            <b>Upload Richtlinien</b>
+            <ul>
+              <li>Es sind nur Bilder im .png Format zugelassen.</li>
+              <li>Maximale größe 1000x1000px und 1MB.</li>
+              <li>Das logo muss einen transparenten Hintergrund haben.</li>
+            </ul>
+            <div>
+              <strong>Upload ist in dieser demo deaktiviert. :(</strong>
+            </div>
+            {{>upload}}
+          </div>
+        </div>
+      </div>
+
+      {{>setGoogleApiKey}}
+    </div>
+  </div>
+</template>
+<template name="upload">
+  <button disabled type="button" name="upload" class="btn btn-w-m btn-primary">
+    Neues Logo hochladen
+  </button>
+</template>
+<template name="setGoogleApiKey">
+  <div class="col-lg-6">
+    <div class="ibox float-e-margins">
+      <div class="ibox-title">
+        <h5>GoogleMaps - ApiKey verwalten</h5>
+        {{>iboxTools}}
+      </div>
+      <div class="ibox-content">
+        <div class="text-center">
+          <p>Der aktuelle Google - Maps - ApiKey lautet: {{apiKey.key}}</p>
+          <p>
+            Sollte es probleme mit dem API-key geben kann dieser hiermit geändert werden.
+          </p>
+          <a data-toggle="modal" class="btn btn-primary" href="#modal-form"
+            >Ändern</a
+          >
+        </div>
+        <div id="modal-form" class="modal fade" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-body">
+                <div class="row">
+                  <div class="col-sm-12">
+                    <h3 class="m-t-none m-b">GoogleMaps - Api Key - ändern</h3>
+
+                    <form role="form">
+                         <input
+                                 type="text"
+                                 name="apiKeyInput"
+                                 placeholder="Key hier eingeben"
+                                 class="form-control"
+                         />
+                      <div>
+                          <br>
+                        <button
+                          class="btn btn-sm btn-primary pull-right"
+                          type="submit"
+                        >
+                          Bestätigen
+                        </button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
