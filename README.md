@@ -12,7 +12,7 @@
 </p>
 
 
-## This project is based on:
+## This project is based on
 
 - [Meteor](https://www.meteor.com/)
 - [Blaze](http://blazejs.org/)
