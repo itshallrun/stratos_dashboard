@@ -19,7 +19,7 @@
 - [Highcharts](https://www.highcharts.com/)
 - [Google Maps API](https://developers.google.com/maps/documentation/javascript/tutorial?hl=de)
 - [Inspinia Admin Theme](https://wrapbootstrap.com/theme/inspinia-responsive-admin-theme-WB0R5L90S)
-- Reactive data utilisation
+- Reactive data
 - User athentication with meteor
 - Responsive mobile friendly design
 
